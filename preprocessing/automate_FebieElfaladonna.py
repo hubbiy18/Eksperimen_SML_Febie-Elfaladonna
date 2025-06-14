@@ -51,3 +51,6 @@ if __name__ == "__main__":
     df_clean.to_csv(output_path, index=False)
 
     print(f"Preprocessing selesai. File disimpan di: {output_path}")
+
+
+#silahkan cek apakah sudah sesuai ???
