@@ -3,10 +3,10 @@ name: Preprocess Dataset
 on:
   push:
     branches:
-      -main
+      - main
   pull_request:
-      branches:
-        -main
+    branches:
+      - main
     paths:
       - 'winequality-red/**'
       - 'preprocessing/automate_FebieElfaladonna.py'
