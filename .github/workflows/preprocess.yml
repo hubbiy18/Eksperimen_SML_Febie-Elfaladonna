@@ -3,9 +3,8 @@ name: Preprocess Dataset
 on:
   push:
     paths:
-      - 'winequality-red/**'
-      - 'preprocessing/**'
-      - 'requirements.txt'
+      - 'winequality-red.csv'
+      - 'preprocessing/automate_FebieElfaladonna.py'
       - '.github/workflows/preprocess.yml'
 
 jobs:
@@ -27,21 +26,12 @@ jobs:
 
       - name: Run preprocessing
         run: |
-          python -c "
-import sys
-sys.path.append('preprocessing')
-import pandas as pd
-from automate_FebieElfaladonna import preprocess_wine_data
-
-df = preprocess_wine_data('winequality-red/winequality-red.csv')
-df.to_csv('winequality_red_preprocessed.csv', index=False)
-print('Dataset berhasil diproses dan disimpan.')
-          "
+          python preprocessing/automate_FebieElfaladonna.py
 
       - name: Commit hasil preprocessing
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add winequality_red_preprocessed.csv
-          git commit -m 'Update hasil preprocessing otomatis'
-          git push
+          git add preprocessing/dataset\ preprocessed/winequality_red_preprocessed.csv
+          git commit -m "Update hasil preprocessing otomatis"
+          git push || echo "Tidak ada perubahan untuk di-commit."
