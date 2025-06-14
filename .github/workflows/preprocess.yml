@@ -8,6 +8,9 @@ on:
       - '.github/workflows/preprocess.yml'
       - 'requirements.txt'
 
+permissions:
+  contents: write
+
 jobs:
   preprocess:
     runs-on: ubuntu-latest
