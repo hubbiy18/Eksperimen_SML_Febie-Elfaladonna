@@ -1,0 +1,37 @@
+name: Train Random Forest Model
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'modelling.py'
+      - '.github/workflows/train_model.yml'
+      - '.env'
+      - 'winequality-red/**'
+
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+
+    env:
+      MLFLOW_TRACKING_URI: ${{ secrets.FEBIE_ELFALADONNA_URI }}
+      MLFLOW_TRACKING_USERNAME: ${{ secrets.FEBIE_ELFALADONNA_USER }}
+      MLFLOW_TRACKING_PASSWORD: ${{ secrets.FEBIE_ELFALADONNA_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run model training
+        run: |
+          python modelling.py
