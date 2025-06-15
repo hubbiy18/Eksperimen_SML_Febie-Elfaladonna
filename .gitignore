@@ -1,27 +1,5 @@
-# Abaikan file environment
 .env
-
-# Abaikan file konfigurasi MLflow lokal
-mlruns/
-mlruns.db
-
-# Abaikan file Python cache
 __pycache__/
-*.py[cod]
-
-# Abaikan file dari virtual environment
-venv/
-env/
-*.egg-info/
-
-# Abaikan file hasil preprocessing (opsional)
-preprocessing/winequality_red_preprocessed.csv
-
-# Abaikan file Jupyter dan log
-*.ipynb_checkpoints
-*.log
-
-# Abaikan file data besar
-*.csv
-*.xlsx
-*.parquet
+*.pyc
+.preprocessed_data/
+mlruns/
